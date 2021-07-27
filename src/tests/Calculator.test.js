@@ -85,5 +85,16 @@ describe('Calculator', () => {
     expect(runningTotal.text()).toEqual('3');
   })
 
+  it('should be able to track multiple input clicks', () => {
+    
+    const button5 = container.find('#number5');
+    const runningTotal = container.find('#running-total');
+
+    button5.simulate('click');
+    button5.simulate('click');
+
+    expect(runningTotal.text()).toEqual('55');
+  })
+
 })
 
