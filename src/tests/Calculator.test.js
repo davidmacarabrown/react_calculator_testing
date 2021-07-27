@@ -55,12 +55,12 @@ describe('Calculator', () => {
     
     const button3 = container.find('#number3');
     const button5 = container.find('#number5');
-    const multiply = container.find('#operator-multiply');
+    const multiplication = container.find('#operator-multiply');
     const equals = container.find('#operator-equals');
     const runningTotal = container.find('#running-total');
 
     button3.simulate('click');
-    multiply.simulate('click');
+    multiplication.simulate('click');
     button5.simulate('click');
     equals.simulate('click');
 
@@ -71,14 +71,14 @@ describe('Calculator', () => {
 
     const button2 = container.find('#number2');
     const button1 = container.find('#number1');
-    const divide = container.find('#operator-divide');
+    const division = container.find('#operator-divide');
     const button7 = container.find('#number7');
     const equals = container.find('#operator-equals');
     const runningTotal = container.find('#running-total');
 
     button2.simulate('click');
     button1.simulate('click');
-    divide.simulate('click');
+    division.simulate('click');
     button7.simulate('click');
     equals.simulate('click');
 
@@ -86,7 +86,7 @@ describe('Calculator', () => {
   })
 
   it('should be able to track multiple input clicks', () => {
-    
+
     const button5 = container.find('#number5');
     const runningTotal = container.find('#running-total');
 
@@ -96,5 +96,43 @@ describe('Calculator', () => {
     expect(runningTotal.text()).toEqual('55');
   })
 
+  it('should be able to carry out chained operations', () => {
+    
+    const addition = container.find('#operator-add');
+    const multiplication = container.find('#operator-multiply');
+    const button1 = container.find('#number1');
+    const button7 = container.find('#number9');
+    const button9 = container.find('#number7');
+    const equals = container.find('#operator-equals');
+    const runningTotal = container.find('#running-total');
+
+    button9.simulate('click');
+    multiplication.simulate('click');
+    button7.simulate('click');
+    addition.simulate('click');
+    button1.simulate('click');
+    equals.simulate('click');
+
+    expect(runningTotal.text()).toEqual('64')
+  })
+
+  it('should be able to handle a clear operation without affecting the result of the following calculation', () => {
+
+    const button1 = container.find('#number1');
+    const button8 = container.find('#number8');
+    const addition = container.find('#operator-add');
+    const equals = container.find('#operator-equals');
+    const clear = container.find('#clear');
+    const runningTotal = container.find('#running-total');
+
+    button1.simulate('click');
+    clear.simulate('click');
+    button8.simulate('click');
+    addition.simulate('click');
+    button8.simulate('click');
+    equals.simulate('click');
+
+    expect(runningTotal.text()).toEqual('16')
+  })
 })
 
