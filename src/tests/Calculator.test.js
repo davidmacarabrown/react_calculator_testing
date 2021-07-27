@@ -33,7 +33,6 @@ describe('Calculator', () => {
     equals.simulate('click');
 
     expect(runningTotal.text()).toEqual('5')
-
   })
 
   it('should be able to subtract numbers', () => {
@@ -53,10 +52,38 @@ describe('Calculator', () => {
   })
 
   it ('should be able to multiply numbers', () => {
-    const 
+    
+    const button3 = container.find('#number3');
+    const button5 = container.find('#number5');
+    const multiply = container.find('#operator-multiply');
+    const equals = container.find('#operator-equals');
+    const runningTotal = container.find('#running-total');
 
+    button3.simulate('click');
+    multiply.simulate('click');
+    button5.simulate('click');
+    equals.simulate('click');
+
+    expect(runningTotal.text()).toEqual('15');
   })
 
+  it('should be able to divide numbers', () => {
+
+    const button2 = container.find('#number2');
+    const button1 = container.find('#number1');
+    const divide = container.find('#operator-divide');
+    const button7 = container.find('#number7');
+    const equals = container.find('#operator-equals');
+    const runningTotal = container.find('#running-total');
+
+    button2.simulate('click');
+    button1.simulate('click');
+    divide.simulate('click');
+    button7.simulate('click');
+    equals.simulate('click');
+
+    expect(runningTotal.text()).toEqual('3');
+  })
 
 })
 
