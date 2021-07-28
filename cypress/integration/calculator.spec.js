@@ -19,8 +19,8 @@ describe("Calculator", () => {
     cy.get('#number6').click();
     cy.get('#operator-add').click();
     cy.get('#number6').click();
-    cy.get('#operator-equals').click();
-    cy.get('.display').should('contain', '12');
+    cy.get('#operator-add').click();
+    cy.get('.display').should('contain', '12')
   })
 
   it('should be able to handle chained operations', () => {
