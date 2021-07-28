@@ -67,7 +67,7 @@ function App() {
       setPreviousTotal(runningTotal);
       setNewTotal(true);
   }
-
+  
   const add = (number) => {
     setRunningTotal(parseFloat(previousTotal) + parseFloat(number));
   }
@@ -78,15 +78,17 @@ function App() {
 
   const multiply = (number) => {
     setRunningTotal(parseFloat(previousTotal) * parseFloat(number));
+    
   }
 
   const divide = (number) => {
-    if (runningTotal === 0) {
+    if (number === 0) {
       setRunningTotal('Error')
     } else {
-      setRunningTotal(parseFloat(previousTotal) / parseFloat(number));
-    }
+      setRunningTotal(parseFloat(previousTotal) / parseFloat(number));}
+    
   }
+
 
 
   return (

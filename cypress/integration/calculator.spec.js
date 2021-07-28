@@ -67,5 +67,11 @@ describe("Calculator", () => {
     cy.get('.display').should('contain', "987654330")
   })
 
-
+  it('should be able to handle dividing by zero', () => {
+    cy.get('#number5').click();
+    cy.get('#operator-divide').click();
+    cy.get('#number0').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', 'Error')
+  })
 })
