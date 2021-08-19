@@ -116,20 +116,20 @@ describe('Calculator', () => {
     expect(runningTotal.text()).toEqual('64')
   })
 
-  it('should be able to handle a clear operation without affecting the result of the following calculation', () => {
+  it('should be able to handle a clear operation without affecting the running total from a previous calculation', () => {
 
-    const button1 = container.find('#number1');
     const button8 = container.find('#number8');
     const addition = container.find('#operator-add');
     const equals = container.find('#operator-equals');
     const clear = container.find('#clear');
     const runningTotal = container.find('#running-total');
 
-    button1.simulate('click');
-    clear.simulate('click');
     button8.simulate('click');
     addition.simulate('click');
     button8.simulate('click');
+    addition.simulate('click');
+    button8.simulate('click');
+    clear.simulate('click');
     equals.simulate('click');
 
     expect(runningTotal.text()).toEqual('16')
